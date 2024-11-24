@@ -1,18 +1,18 @@
 <script>
 
 import Button from 'primevue/button';
+import HomePage from "@/components/HomePage.vue";
 
 export default {
   components: {
+    HomePage,
     Button
   }
 }
 </script>
 
 <template>
-  <h1>Hello World</h1>
-
-  <Button label="Click me" />
+  <HomePage />
 </template>
 
 <style scoped>
