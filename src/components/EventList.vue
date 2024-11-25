@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="container mx-auto">
-    <div class="min-h-screen" id="events">
+  <div class="container mx-auto min-h-screen">
+    <div id="events">
       EventList Vue component
     </div>
   </div>

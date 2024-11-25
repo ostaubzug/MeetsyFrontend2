@@ -2,9 +2,11 @@
 
 import Button from 'primevue/button';
 import HomePage from "@/components/HomePage.vue";
+import EventList from "@/components/EventList.vue";
 
 export default {
   components: {
+    EventList,
     HomePage,
     Button
   }
@@ -12,9 +14,14 @@ export default {
 </script>
 
 <template>
-  <HomePage id="home" />
+  <HomePage id="home"/>
+  <EventList id="events"/>
+
 </template>
 
-<style scoped>
+<style>
+html {
+  scroll-behavior: smooth;
+}
 
 </style>
