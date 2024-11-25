@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <HomePage />
+  <HomePage id="home" />
 </template>
 
 <style scoped>
