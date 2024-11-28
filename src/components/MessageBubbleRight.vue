@@ -13,17 +13,24 @@ export default {
 
 <template>
   <div class="container m-5 mt-10 max-w-xl md:justify-center">
-    <div class="chat-bubble">
-      {{ message }}
+    <div class="chat-bubble-container">
+      <div class="chat-bubble">
+        {{ message }}
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.chat-bubble-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .chat-bubble {
-  max-width: 60%; /* Adjust width based on your needs */
+  max-width: 60%;
   padding: 10px 15px;
-  background-color: #34c759; /* iOS green */
+  background-color: #34c759;
   color: white;
   border-radius: 20px;
   position: relative;
@@ -38,7 +45,7 @@ export default {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 30px; /* Adjust based on your layout */
+  right: 30px; /* Changed from left to right */
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -46,5 +53,4 @@ export default {
   border-bottom: 0;
   margin-bottom: -10px;
 }
-
 </style>
