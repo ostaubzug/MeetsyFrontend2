@@ -1,22 +1,36 @@
 <script>
+import Button from 'primevue/button';
+import 'primeicons/primeicons.css'
+
 export default {
   name: "MessageBubbleRight",
+  components: {
+    Button
+  },
   props: {
     message: {
       type: String,
       required: true,
       default: ''
     }
+  },
+  methods: {
+    copyText() {
+      navigator.clipboard.writeText(this.message)
+    }
   }
 }
 </script>
 
 <template>
-  <div class="container max-w-xl md:justify-center">
-    <div class="chat-bubble-container">
-      <div class="chat-bubble">
-        {{ message }}
+  <div class="px-4">
+    <div class="flex flex-col items-end">  <!-- Added wrapper div -->
+      <div class="chat-bubble-container">
+        <div class="chat-bubble">
+          {{ message }}
+        </div>
       </div>
+      <Button @click="copyText" icon="pi pi-copy" variant="text"/>
     </div>
   </div>
 </template>

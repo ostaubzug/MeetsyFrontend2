@@ -1,11 +1,23 @@
 <script>
+import Button from 'primevue/button';
+import 'primeicons/primeicons.css'
+
+
 export default {
-  name: "MessageBubbleLeft", // Changed name to reflect position
+  name: "MessageBubbleLeft",
+  components:{
+    Button
+  },
   props: {
     message: {
       type: String,
       required: true,
       default: ''
+    }
+  },
+  methods: {
+    copyText() {
+      navigator.clipboard.writeText(this.message)
     }
   }
 }
@@ -14,8 +26,11 @@ export default {
 <template>
   <div class="container m-5 mt-10 max-w-xl md:justify-center">
     <div class="chat-bubble-container">
-      <div class="chat-bubble">
-        {{ message }}
+      <div class="flex flex-col">
+        <div class="chat-bubble">
+          {{ message }}
+        </div>
+        <Button @click="copyText" icon="pi pi-copy" variant="text"/>
       </div>
     </div>
   </div>
