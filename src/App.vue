@@ -3,19 +3,26 @@
 import Button from 'primevue/button';
 import HomePage from "@/components/HomePage.vue";
 import EventList from "@/components/EventList.vue";
+import Menubar from 'primevue/menubar';
+
 
 export default {
   components: {
     EventList,
     HomePage,
-    Button
+    Button,
+    Menubar
   }
 }
 </script>
 
 <template>
-  <HomePage id="home"/>
-  <EventList id="events"/>
+  <div class="max-w-4xl mx-auto">
+    <Menubar :model="items" />
+
+    <HomePage id="home"/>
+    <EventList id="events"/>
+  </div>
 
 </template>
 
