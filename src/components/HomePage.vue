@@ -26,8 +26,8 @@ export default {
 </script>
 
 <template>
-  <div class="container mx-auto min-h-screen px-2">
-    <div class="flex flex-col items-center md:flex-row">
+  <div class="container mx-auto min-h-screen px-2 md:px-14 flex items-center">
+    <div class="flex flex-col items-center md:flex-row md:gap-8 md:justify-center md:w-full">
       <Image src="/src/assets/Meetsy.png" alt="Image" width="550" class=""/>
       <div class="flex flex-col items-center md:items-start">
         <h1 class="text-8xl lg:text-9xl text-stone-700">meetsy</h1>
