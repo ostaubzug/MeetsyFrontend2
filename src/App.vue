@@ -17,13 +17,13 @@ export default {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto">
-    <Menubar :model="items" />
-
-    <HomePage id="home"/>
-    <EventList id="events"/>
+  <div class="min-h-screen bg-gray-100">
+    <div class="max-w-4xl mx-auto bg-white shadow-md">
+      <Menubar :model="items" />
+      <HomePage id="home"/>
+      <EventList id="events"/>
+    </div>
   </div>
-
 </template>
 
 <style>

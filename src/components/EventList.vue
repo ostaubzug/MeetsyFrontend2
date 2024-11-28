@@ -12,7 +12,7 @@ export default {
 
 <template>
   <div class="container mx-auto min-h-screen">
-    <div id="events" class="pt-5">
+    <div id="events" class="pt-5 px-5">
       <MessageBubbleRight message="Good Morning this is some test message. i try to make this message a bit longer than normal to see how it will behave"/>
       <MessageBubbleLeft message="Good Morning this is some test message. i try to make this message a bit longer than normal to see how it will behave"/>
 

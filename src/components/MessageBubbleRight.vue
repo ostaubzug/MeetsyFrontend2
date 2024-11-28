@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <div class="container m-5 mt-10 max-w-xl md:justify-center">
+  <div class="container max-w-xl md:justify-center">
     <div class="chat-bubble-container">
       <div class="chat-bubble">
         {{ message }}
