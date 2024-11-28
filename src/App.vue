@@ -1,18 +1,47 @@
 <script>
 
 import Button from 'primevue/button';
-import HomePage from "@/components/HomePage.vue";
-import EventList from "@/components/EventList.vue";
 import Menubar from 'primevue/menubar';
+import { ref } from "vue";
+import router from "@/router/index.js";
 
+const items = ref([
+  {
+    label: "meetsy",
+    command:() => {
+      router.push("/");
+    },
+  },
+    {
+    label: "add idea",
+    command:() => {
+      router.push("/AddEvent");
+    },
+  },
+  {
+    label: "about us",
+    command:() => {
+      router.push("/AboutUs");
+    },
+  },
+  {
+    label: "sign up",
+    command:() => {
+      router.push("/Signup");
+    },
+  },
+]);
 
 export default {
   components: {
-    EventList,
-    HomePage,
     Button,
-    Menubar
-  }
+    Menubar,
+  },
+  setup() {
+    return {
+      items,
+    };
+  },
 }
 </script>
 
@@ -20,8 +49,7 @@ export default {
   <div class="min-h-screen bg-gray-100">
     <div class="max-w-4xl mx-auto bg-white shadow-md">
       <Menubar :model="items" />
-      <HomePage id="home"/>
-      <EventList id="events"/>
+      <RouterView />
     </div>
   </div>
 </template>

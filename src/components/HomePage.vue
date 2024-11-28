@@ -2,13 +2,15 @@
 
 import Button from 'primevue/button';
 import Image from 'primevue/image';
+import EventList from "@/components/EventList.vue";
 
 
 export default {
   name: "HomePage",
   components: {
     Button,
-    Image
+    Image,
+    EventList
   },
   methods: {
     scrollToSection(sectionId) {
@@ -36,6 +38,9 @@ export default {
       </div>
     </div>
   </div>
+
+
+  <EventList id="events"/>
 </template>
 
 <style scoped>

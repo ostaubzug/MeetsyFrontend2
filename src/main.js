@@ -5,6 +5,7 @@ import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
 import {definePreset} from "@primevue/themes";
+import router from "@/router/index.js";
 
 
 const MeetsyPreset = definePreset(Aura, {
@@ -37,6 +38,7 @@ app.use(PrimeVue, {
 
     }
 });
+app.use(router);
 
 app.mount('#app');
 
