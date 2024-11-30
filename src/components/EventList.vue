@@ -22,9 +22,10 @@ export default {
     async fetchEvents() {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/getAllMessageBubbleData`, {
-          method: 'GET',
-          rejectUnauthorized: false
-        })
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
         if (!response.ok) throw new Error('Failed to fetch events')
         this.messageBubbleList = await response.json()
       } catch (error) {
