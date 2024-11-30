@@ -21,8 +21,10 @@ export default {
   methods: {
     async fetchEvents() {
       try {
-        console.log('Fetching from:', `${import.meta.env.VITE_API_URL}/getAllMessageBubbleData`);
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/getAllMessageBubbleData`)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/getAllMessageBubbleData`, {
+          method: 'GET',
+          rejectUnauthorized: false
+        })
         if (!response.ok) throw new Error('Failed to fetch events')
         this.messageBubbleList = await response.json()
       } catch (error) {
