@@ -48,7 +48,7 @@ export default {
 <template>
   <div class="min-h-screen bg-gray-100">
     <div class="max-w-4xl mx-auto bg-white shadow-md">
-      <Menubar :model="items" />
+      <Menubar :model="items"></Menubar>
       <RouterView />
     </div>
   </div>

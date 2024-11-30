@@ -1,11 +1,33 @@
 <script>
 import MessageBubbleRight from "@/components/MessageBubbleRight.vue";
 import MessageBubbleLeft from "@/components/MessageBubbleLeft.vue";
+import Paginator from 'primevue/paginator';
+
 export default {
   name: "EventList",
   components: {
     MessageBubbleLeft,
-    MessageBubbleRight
+    MessageBubbleRight,
+    Paginator
+  },
+  data() {
+    return {
+      messageBubbleList: []
+    }
+  },
+  mounted() {
+    this.fetchEvents()
+  },
+  methods: {
+    async fetchEvents() {
+      try {
+        const response = await fetch('http://meetsy-testsrv.prod.projects.ls.eee.intern:8080/getAllMessageBubbleData')
+        if (!response.ok) throw new Error('Failed to fetch events')
+        this.messageBubbleList = await response.json()
+      } catch (error) {
+        console.error('Error fetching events:', error)
+      }
+    }
   }
 }
 </script>
@@ -13,11 +35,17 @@ export default {
 <template>
   <div class="container mx-auto min-h-screen">
     <div id="events" class="pt-5 px-5">
-      <MessageBubbleRight message="Good Morning this is some test message. i try to make this message a bit longer than normal to see how it will behave"/>
-      <MessageBubbleLeft message="Good Morning this is some test message. i try to make this message a bit longer than normal to see how it will behave"/>
-
+      <template v-for="(message, index) in messageBubbleList" :key="message.id">
+        <MessageBubbleRight
+            v-if="index % 2 === 0"
+            :message="message.description"
+        />
+        <MessageBubbleLeft
+            v-else
+            :message="message.description"
+        />
+      </template>
     </div>
-
   </div>
 </template>
 
