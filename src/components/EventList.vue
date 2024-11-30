@@ -21,7 +21,7 @@ export default {
   methods: {
     async fetchEvents() {
       try {
-        const response = await fetch('http://meetsy-testsrv.prod.projects.ls.eee.intern:8080/getAllMessageBubbleData')
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/getAllMessageBubbleData`)
         if (!response.ok) throw new Error('Failed to fetch events')
         this.messageBubbleList = await response.json()
       } catch (error) {
