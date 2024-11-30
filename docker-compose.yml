@@ -1,0 +1,9 @@
+version: '3'
+services:
+  vue-app:
+    image: your-github-registry/vue-app:latest
+    ports:
+      - "443:443"
+    volumes:
+      - /etc/nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
+      - /etc/nginx/ssl/private.key:/etc/nginx/ssl/private.key
