@@ -5,5 +5,5 @@ services:
     ports:
       - "443:443"
     volumes:
-      - /etc/nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
-      - /etc/nginx/ssl/private.key:/etc/nginx/ssl/private.key
+      - /etc/nginx/ssl:/etc/nginx/ssl
+    restart: unless-stopped
