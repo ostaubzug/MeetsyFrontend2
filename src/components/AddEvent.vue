@@ -38,7 +38,7 @@ export default {
     async onSubmit() {
       if (this.validateForm()) {
         try {
-          const response = await fetch('http://meetsy-testsrv.prod.projects.ls.eee.intern:8080/addMessageBubbleData', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/addMessageBubbleData`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -57,8 +57,6 @@ export default {
               detail: 'Ihr neuer Event wurde hinzugefügt!',
               life: 3000
             });
-
-            // Clear form after successful submission
             this.formData.location = '';
             this.formData.time = '';
             this.formData.message = '';
