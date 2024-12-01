@@ -34,14 +34,14 @@ export default {
 
 <template>
   <div class="px-4">
-    <div class="flex flex-col items-end">  <!-- Added wrapper div -->
-      <div class="chat-bubble-container">
+    <div class="flex flex-col items-end">
+      <div class="flex flex-col items-end">  <!-- Added flex container for bubble and button -->
         <div class="chat-bubble">
           <p>{{ message }}</p>
           <p><strong>Ort :</strong> {{ location }}</p>
           <p><strong>Zeit :</strong> {{ time }}</p>
         </div>
-        <Button @click="copyText" icon="pi pi-copy" variant="text" />
+        <Button @click="copyText" icon="pi pi-copy" variant="text" class="mt-2" /> <!-- Added margin-top -->
       </div>
     </div>
   </div>
