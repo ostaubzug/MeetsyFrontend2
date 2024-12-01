@@ -35,26 +35,20 @@ export default {
 <template>
   <div class="px-4">
     <div class="flex flex-col items-end">
-      <div class="flex flex-col items-end">  <!-- Added flex container for bubble and button -->
-        <div class="chat-bubble">
+      <div class="flex flex-col items-end w-full sm:w-auto">  <!-- Added width control -->
+        <div class="chat-bubble w-full sm:max-w-[60%]">  <!-- Modified width for mobile -->
           <p>{{ message }}</p>
           <p><strong>Ort :</strong> {{ location }}</p>
           <p><strong>Zeit :</strong> {{ time }}</p>
         </div>
-        <Button @click="copyText" icon="pi pi-copy" variant="text" class="mt-2" /> <!-- Added margin-top -->
+        <Button @click="copyText" icon="pi pi-copy" variant="text" class="mt-2" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.chat-bubble-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .chat-bubble {
-  max-width: 60%;
   padding: 10px 15px;
   background-color: #34c759;
   color: white;
@@ -71,7 +65,7 @@ export default {
   content: '';
   position: absolute;
   bottom: 0;
-  right: 30px; /* Changed from left to right */
+  right: 30px;
   width: 0;
   height: 0;
   border: 10px solid transparent;
@@ -79,4 +73,5 @@ export default {
   border-bottom: 0;
   margin-bottom: -10px;
 }
+
 </style>

@@ -34,29 +34,22 @@ export default {
 </script>
 
 <template>
-  <div class="container m-5 mt-10 max-w-xl md:justify-center">
-    <div class="chat-bubble-container">
-      <div class="flex flex-col">
-        <div class="chat-bubble">
+  <div class="px-4">
+    <div class="flex flex-col items-start"> <!-- Changed to items-start -->
+      <div class="flex flex-col items-start w-full sm:w-auto"> <!-- Added width control and changed to items-start -->
+        <div class="chat-bubble w-full sm:max-w-[60%]"> <!-- Modified width for mobile -->
           <p>{{ message }}</p>
           <p><strong>Ort :</strong> {{ location }}</p>
           <p><strong>Zeit :</strong> {{ time }}</p>
         </div>
-        <Button @click="copyText" icon="pi pi-copy" variant="text" />
+        <Button @click="copyText" icon="pi pi-copy" variant="text" class="mt-2" />
       </div>
     </div>
   </div>
 </template>
 
-
 <style scoped>
-.chat-bubble-container {
-  display: flex;
-  justify-content: flex-start;  /* Changed from flex-end to flex-start */
-}
-
 .chat-bubble {
-  max-width: 60%;
   padding: 10px 15px;
   background-color: #0479ff;
   color: white;
@@ -73,11 +66,11 @@ export default {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 30px;  /* Changed from right to left */
+  left: 30px;
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-top-color: #0479ff;  /* Changed to match bubble color */
+  border-top-color: #0479ff;
   border-bottom: 0;
   margin-bottom: -10px;
 }
