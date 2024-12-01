@@ -1,6 +1,11 @@
 <script>
+import Button from 'primevue/button';
+
 export default {
   name: "Navbar",
+  components: {
+    Button
+  },
   data() {
     return {
       isOpen: false
@@ -59,11 +64,15 @@ export default {
         about us
       </router-link>
 
-      <router-link
-          to="/Signup"
-          class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
-      >
-        sign up
+      <router-link to="/Signup" custom v-slot="{ navigate }">
+        <Button
+            @click="navigate"
+            label="sign up"
+            severity="primary"
+            rounded
+            raised
+            class="!w-auto"
+        />
       </router-link>
     </div>
 
@@ -96,12 +105,15 @@ export default {
             about us
           </router-link>
 
-          <router-link
-              to="/Signup"
-              class="block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
-              @click="isOpen = false"
-          >
-            sign up
+          <router-link to="/Signup" custom v-slot="{ navigate }">
+            <Button
+                @click="() => { navigate(); isOpen = false; }"
+                label="sign up"
+                severity="primary"
+                class="!w-full md:!w-auto"
+                rounded
+                raised
+            />
           </router-link>
         </div>
       </div>

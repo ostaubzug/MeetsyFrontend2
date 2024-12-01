@@ -42,7 +42,7 @@ export default {
         <h1 class="text-8xl lg:text-9xl text-stone-700">meetsy</h1>
         <h2 class="text-3xl lg:text-3xl text-stone-500 my-6 text-center md:text-left">We help you meet your friends
           easy</h2>
-        <Button label="Get inspiration" severity="Danger" class="mt-4 md:mt-10" rounded raised
+        <Button label="Get inspiration" severity="primary" class="mt-4 md:mt-10" rounded raised
                 @click="scrollToSection('events')"/>
       </div>
     </div>
