@@ -2,27 +2,38 @@
 import MessageBubbleRight from "@/components/MessageBubbleRight.vue";
 import MessageBubbleLeft from "@/components/MessageBubbleLeft.vue";
 import Paginator from 'primevue/paginator';
+import InputText from 'primevue/inputtext';
+import Button from 'primevue/button';
 
 export default {
   name: "EventList",
   components: {
     MessageBubbleLeft,
     MessageBubbleRight,
-    Paginator
+    Paginator,
+    InputText,
+    Button
   },
   data() {
     return {
       messageBubbleList: [],
       first: 0,
-      rows: 15
+      rows: 15,
+      locationFilter: '',
+      isFilterVisible: false
     }
   },
   computed: {
+    filteredMessages() {
+      return this.messageBubbleList.filter(message =>
+          message.location.toLowerCase().includes(this.locationFilter.toLowerCase())
+      );
+    },
     paginatedMessages() {
-      return this.messageBubbleList.slice(this.first, this.first + this.rows);
+      return this.filteredMessages.slice(this.first, this.first + this.rows);
     },
     totalMessages() {
-      return this.messageBubbleList.length;
+      return this.filteredMessages.length;
     }
   },
   mounted() {
@@ -51,6 +62,12 @@ export default {
           block: 'start'
         });
       }, 0);
+    },
+    toggleFilter() {
+      this.isFilterVisible = !this.isFilterVisible;
+      if (!this.isFilterVisible) {
+        this.locationFilter = '';
+      }
     }
   }
 }
@@ -59,6 +76,33 @@ export default {
 <template>
   <div class="container mx-auto min-h-screen">
     <div id="events" class="pt-5 px-5">
+      <div>
+        <div class="flex justify-content-end align-items-center gap-2 pb-8">
+          <div class="flex align-items-center gap-2 ml-auto">
+            <transition name="fade">
+              <InputText
+                  v-if="isFilterVisible"
+                  v-model="locationFilter"
+                  placeholder="Filter by location..."
+                  class="w-12rem"
+                  @blur="!locationFilter && toggleFilter()"
+              />
+            </transition>
+            <Button
+                icon="pi pi-filter"
+                rounded
+                text
+                severity="secondary"
+                aria-label="Filter"
+                @click="toggleFilter"
+            />
+          </div>
+        </div>
+
+
+      </div>
+
+
       <template v-for="(message, index) in paginatedMessages" :key="message.id">
         <MessageBubbleRight
             v-if="index % 2 === 0"
@@ -89,4 +133,14 @@ export default {
 </template>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  width: 0;
+}
 </style>
