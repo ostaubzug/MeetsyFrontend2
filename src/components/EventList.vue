@@ -12,7 +12,17 @@ export default {
   },
   data() {
     return {
-      messageBubbleList: []
+      messageBubbleList: [],
+      first: 0,
+      rows: 10
+    }
+  },
+  computed: {
+    paginatedMessages() {
+      return this.messageBubbleList.slice(this.first, this.first + this.rows);
+    },
+    totalMessages() {
+      return this.messageBubbleList.length;
     }
   },
   mounted() {
@@ -31,6 +41,10 @@ export default {
       } catch (error) {
         console.error('Error fetching events:', error)
       }
+    },
+    onPageChange(event) {
+      this.first = event.first;
+      this.rows = event.rows;
     }
   }
 }
@@ -39,7 +53,7 @@ export default {
 <template>
   <div class="container mx-auto min-h-screen">
     <div id="events" class="pt-5 px-5">
-      <template v-for="(message, index) in messageBubbleList" :key="message.id">
+      <template v-for="(message, index) in paginatedMessages" :key="message.id">
         <MessageBubbleRight
             v-if="index % 2 === 0"
             :message="message.description"
@@ -53,10 +67,21 @@ export default {
             :time="message.time"
         />
       </template>
+
+      <div class="mt-5">
+        <Paginator
+            v-model:first="first"
+            v-model:rows="rows"
+            :totalRecords="totalMessages"
+            :rowsPerPageOptions="[5, 10, 20]"
+            template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+            @page="onPageChange"
+            class="p-paginator-bottom"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
 </style>
