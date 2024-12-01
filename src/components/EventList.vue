@@ -14,7 +14,7 @@ export default {
     return {
       messageBubbleList: [],
       first: 0,
-      rows: 10
+      rows: 15
     }
   },
   computed: {
@@ -68,12 +68,11 @@ export default {
         />
       </template>
 
-      <div class="mt-5">
+      <div class="mt-5 pb-14">
         <Paginator
             v-model:first="first"
             v-model:rows="rows"
             :totalRecords="totalMessages"
-            :rowsPerPageOptions="[5, 10, 20]"
             template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
             @page="onPageChange"
             class="p-paginator-bottom"
