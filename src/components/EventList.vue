@@ -83,7 +83,7 @@ export default {
               <InputText
                   v-if="isFilterVisible"
                   v-model="locationFilter"
-                  placeholder="Filter by location..."
+                  placeholder="Filtere den Ort"
                   class="w-12rem"
                   @blur="!locationFilter && toggleFilter()"
               />
