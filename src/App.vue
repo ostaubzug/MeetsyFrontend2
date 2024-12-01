@@ -1,55 +1,18 @@
 <script>
-
-import Button from 'primevue/button';
-import Menubar from 'primevue/menubar';
-import { ref } from "vue";
-import router from "@/router/index.js";
-
-const items = ref([
-  {
-    label: "meetsy",
-    command:() => {
-      router.push("/");
-    },
-  },
-    {
-    label: "add idea",
-    command:() => {
-      router.push("/AddEvent");
-    },
-  },
-  {
-    label: "about us",
-    command:() => {
-      router.push("/AboutUs");
-    },
-  },
-  {
-    label: "sign up",
-    command:() => {
-      router.push("/Signup");
-    },
-  },
-]);
+import Navbar from '@/components/Navbar.vue'
 
 export default {
   components: {
-    Button,
-    Menubar,
-  },
-  setup() {
-    return {
-      items,
-    };
-  },
+    Navbar
+  }
 }
 </script>
 
 <template>
   <div class="min-h-screen bg-gray-100">
     <div class="max-w-4xl mx-auto bg-white shadow-md">
-      <Menubar :model="items"></Menubar>
-      <RouterView />
+      <Navbar/>
+      <RouterView/>
     </div>
   </div>
 </template>
@@ -58,5 +21,4 @@ export default {
 html {
   scroll-behavior: smooth;
 }
-
 </style>
