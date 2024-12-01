@@ -43,10 +43,14 @@ export default {
         <MessageBubbleRight
             v-if="index % 2 === 0"
             :message="message.description"
+            :location="message.location"
+            :time="message.time"
         />
         <MessageBubbleLeft
             v-else
             :message="message.description"
+            :location="message.location"
+            :time="message.time"
         />
       </template>
     </div>

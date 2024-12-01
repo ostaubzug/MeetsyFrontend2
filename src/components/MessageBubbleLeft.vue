@@ -13,6 +13,16 @@ export default {
       type: String,
       required: true,
       default: ''
+    },
+    time: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    location: {
+      type: String,
+      required: true,
+      default: ''
     }
   },
   methods: {
@@ -28,13 +38,16 @@ export default {
     <div class="chat-bubble-container">
       <div class="flex flex-col">
         <div class="chat-bubble">
-          {{ message }}
+          <p>{{ message }}</p>
+          <p><strong>Ort :</strong> {{ location }}</p>
+          <p><strong>Zeit :</strong> {{ time }}</p>
         </div>
-        <Button @click="copyText" icon="pi pi-copy" variant="text"/>
+        <Button @click="copyText" icon="pi pi-copy" variant="text" />
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .chat-bubble-container {
