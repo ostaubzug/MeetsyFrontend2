@@ -5,6 +5,7 @@ import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 import { definePreset } from "@primevue/themes"
 import router from "@/router/index.js"
+import {ToastService} from "primevue";
 
 const MeetsyPreset = definePreset(Aura, {
     semantic: {
@@ -35,4 +36,5 @@ app.use(PrimeVue, {
     }
 })
 app.use(router)
+app.use(ToastService);
 app.mount('#app')

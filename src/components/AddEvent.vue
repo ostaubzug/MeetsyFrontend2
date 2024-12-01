@@ -28,21 +28,57 @@ export default {
     validateForm() {
       this.errors = {};
 
-      if (!this.formData.message) {
-        this.errors.message = 'Eine Nachricht wird benötigt.';
+      if (!this.formData.message.trim()) {
+        this.errors.message = 'Die Nachricht wird benötigt.';
         return false;
       }
 
       return true;
     },
-    onSubmit() {
+    async onSubmit() {
       if (this.validateForm()) {
-        this.$toast.add({
-          severity: 'success',
-          summary: 'Form Submitted',
-          detail: 'Your message has been sent',
-          life: 3000
-        });
+        try {
+          const response = await fetch('http://meetsy-testsrv.prod.projects.ls.eee.intern:8080/addMessageBubbleData', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              location: this.formData.location,
+              description: this.formData.message,
+              time: this.formData.time
+            })
+          });
+
+          if (response.ok) {
+            this.$toast.add({
+              severity: 'success',
+              summary: 'Erfolgreich',
+              detail: 'Ihr neuer Event wurde hinzugefügt!',
+              life: 3000
+            });
+
+            // Clear form after successful submission
+            this.formData.location = '';
+            this.formData.time = '';
+            this.formData.message = '';
+          } else {
+            this.$toast.add({
+              severity: 'error',
+              summary: 'Fehler',
+              detail: 'Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.',
+              life: 3000
+            });
+          }
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          this.$toast.add({
+            severity: 'error',
+            summary: 'Fehler',
+            detail: 'Ein Netzwerkfehler ist aufgetreten. Bitte überprüfen Sie Ihre Verbindung.',
+            life: 3000
+          });
+        }
       }
     }
   }
@@ -75,11 +111,9 @@ export default {
           class="!w-full"
           :class="{ 'p-invalid': errors.message }"
       />
-      <Message
-          v-if="errors.message"
-          severity="error"
-          :text="errors.message"
-      />
+      <small class="text-red-500 font-medium" v-if="errors.message">
+        {{ errors.message }}
+      </small>
     </div>
 
     <Button
@@ -90,6 +124,6 @@ export default {
         rounded
     />
 
-    <Toast />
+    <Toast/>
   </form>
 </template>
