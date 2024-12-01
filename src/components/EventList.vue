@@ -45,6 +45,12 @@ export default {
     onPageChange(event) {
       this.first = event.first;
       this.rows = event.rows;
+      setTimeout(() => {
+        document.getElementById('events').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 0);
     }
   }
 }
