@@ -87,7 +87,7 @@ export default {
         label="Submit"
         severity="primary"
         class="!w-full"
-        rounded raised
+        rounded
     />
 
     <Toast />

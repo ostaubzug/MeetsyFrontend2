@@ -69,8 +69,8 @@ export default {
             @click="navigate"
             label="sign up"
             severity="primary"
+            variant="outlined"
             rounded
-            raised
             class="!w-auto"
         />
       </router-link>
@@ -110,9 +110,9 @@ export default {
                 @click="() => { navigate(); isOpen = false; }"
                 label="sign up"
                 severity="primary"
+                variant="outlined"
                 class="!w-full md:!w-auto"
                 rounded
-                raised
             />
           </router-link>
         </div>
