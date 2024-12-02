@@ -38,7 +38,7 @@ export default {
     async onSubmit() {
       if (this.validateForm()) {
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/addMessageBubbleData`, {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/addProposedMessageBubbleData`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export default {
             this.$toast.add({
               severity: 'success',
               summary: 'Erfolgreich',
-              detail: 'Ihr neuer Event wurde hinzugefügt!',
+              detail: 'Ihr neuer Event wird überprüft und bald veröffentlicht.',
               life: 3000
             });
             this.formData.location = '';
