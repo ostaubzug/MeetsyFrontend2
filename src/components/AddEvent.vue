@@ -86,6 +86,14 @@ export default {
 <template>
   <form @submit.prevent="onSubmit" class="max-w-2xl mx-auto space-y-4 bg-white p-6 rounded-lg shadow-sm">
     <div class="flex flex-col gap-2">
+      <Textarea
+          v-model="formData.message"
+          placeholder="Nachricht"
+          :rows="5"
+          class="!w-full"
+          :class="{ 'p-invalid': errors.message }"
+      />
+    <div class="flex flex-col gap-2">
       <InputText
           v-model="formData.location"
           placeholder="Ort"
@@ -101,14 +109,7 @@ export default {
       />
     </div>
 
-    <div class="flex flex-col gap-2">
-      <Textarea
-          v-model="formData.message"
-          placeholder="Nachricht"
-          :rows="5"
-          class="!w-full"
-          :class="{ 'p-invalid': errors.message }"
-      />
+
       <small class="text-red-500 font-medium" v-if="errors.message">
         {{ errors.message }}
       </small>

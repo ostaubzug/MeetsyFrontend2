@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      imagePath: meetsynImage
+      imagePath: meetsynImage,
     }
   },
 
@@ -52,5 +52,8 @@ export default {
 </template>
 
 <style scoped>
-
+body {
+  background: url("/src/assets/background.svg") no-repeat center center fixed;
+  background-size: cover;
+}
 </style>
