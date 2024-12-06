@@ -31,7 +31,13 @@ npm run dev
 
 ## Deployment
 
-Add your certificats. In this example we are using self signed certificates.
+Set you environment variables in a `.env` file
+
+```sh
+echo "MONGO_PASSWORD=your_new_password_here" > .env
+```
+
+Add your certificates. In this example we are using self signed certificates.
 
 ```sh
 #!/bin/bash
@@ -108,4 +114,11 @@ services:
 In the same directory run
 ```sh
 docker compose up
+```
+
+# Move from the proposed Collection
+If you want to move a message from the proposed collection to the official Collection
+you can use the following post request
+```sh
+https://meetsy-testsrv.prod.projects.ls.eee.intern:8443/moveProposedMessage/your_message_id
 ```
