@@ -34,7 +34,7 @@ npm run dev
 Set you environment variables in a `.env` file
 
 ```sh
-echo "MONGO_PASSWORD=your_new_password_here" > .env
+export MONGO_PASSWORD=your_password_here
 ```
 
 Add your certificates. In this example we are using self signed certificates.
