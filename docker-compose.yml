@@ -12,7 +12,7 @@ services:
       - meetsy-network
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: fajsdfi-asdifa4-ajfaknv-ckkdd
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
       - "27017:27017"
 

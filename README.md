@@ -1,5 +1,3 @@
-
-
 # MeetsyFrontend
 [![CI](https://github.com/ostaubzug/MeetsyFrontend2/actions/workflows/docker-image.yaml/badge.svg)](https://github.com/ostaubzug/MeetsyFrontend2/actions)
 
@@ -31,7 +29,7 @@ npm install
 npm run dev
 ```
 
-## Deploy to Production
+## Deployment
 
 Add your certificats. In this example we are using self signed certificates.
 
@@ -75,7 +73,7 @@ networks:
 - meetsy-network
 environment:
 MONGO_INITDB_ROOT_USERNAME: admin
-MONGO_INITDB_ROOT_PASSWORD: fajsdfi-asdifa4-ajfaknv-ckkdd
+MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
 ports:
 - "27017:27017"
 
