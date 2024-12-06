@@ -1,16 +1,26 @@
+
+
 # MeetsyFrontend
+[![CI](https://github.com/ostaubzug/FocusLauncherVue/actions/workflows/docker-image.yaml/badge.svg)](https://github.com/ostaubzug/FocusLauncherVue/actions)
 
-This template should help get you started developing with Vue 3 in Vite.
+[![Docker Pulls](https://img.shields.io/docker/pulls/oli1115/meetsyfrontend)](https://hub.docker.com/r/oli1115/meetsyfrontend)
+[![Docker Image Size](https://img.shields.io/docker/image-size/oli1115/meetsyfrontend)](https://hub.docker.com/r/oli1115/meetsyfrontend)
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The web app is hosted under https://meetsy-testsrv.prod.projects.ls.eee.intern
 
-## Customize configuration
+You have to be connected to the HSLU VPN / Network to access the page.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
 
-## Project Setup
+todo: Link zum Backend adden.
+- node red
+- mobile app hinzufügen
+
+
+# Development
+
+
+## Run locally
 
 ```sh
 npm install
@@ -22,8 +32,11 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Deploy to Production
 
-```sh
-npm run build
-```
+## Reference to the backend and vice versa
+
+
+
+## Run the other docker container
+## DB Password als ENV Variable setzen
