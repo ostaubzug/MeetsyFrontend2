@@ -61,44 +61,49 @@ ls -l /etc/nginx/ssl/
 
 Create a docker compose file as follows
 ```yaml
+version: '3'
+
 networks:
-meetsy-network:
-name: meetsy-network
+  meetsy-network:
+    name: meetsy-network
 
 services:
-mongo:
-image: mongo
-restart: always
-networks:
-- meetsy-network
-environment:
-MONGO_INITDB_ROOT_USERNAME: admin
-MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-ports:
-- "27017:27017"
+  mongo:
+    image: mongo
+    restart: always
+    networks:
+      - meetsy-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "27017:27017"
 
-api:
-image: oli1115/meetsyapi:latest
-networks:
-- meetsy-network
-ports:
-- "8080:8080"
-- "8443:8443"
-volumes:
-- /etc/nginx/ssl:/app/ssl:ro
-depends_on:
-- mongo
+  api:
+    image: oli1115/meetsyapi:latest
+    networks:
+      - meetsy-network
+    environment:
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - /etc/nginx/ssl:/app/ssl:ro
+    depends_on:
+      - mongo
 
-frontend:
-image: oli1115/meetsyfrontend:latest
-networks:
-- meetsy-network
-ports:
-- "443:443"
-volumes:
-- /etc/nginx/ssl:/etc/nginx/ssl
-depends_on:
-- api
+  frontend:
+    image: oli1115/meetsyfrontend:latest
+    networks:
+      - meetsy-network
+    ports:
+      - "443:443"
+    volumes:
+      - /etc/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - api
+
 ```
 In the same directory run
 ```sh

@@ -20,6 +20,8 @@ services:
     image: oli1115/meetsyapi:latest
     networks:
       - meetsy-network
+    environment:
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
     ports:
       - "8080:8080"
       - "8443:8443"
