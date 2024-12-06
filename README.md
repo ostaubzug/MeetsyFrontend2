@@ -34,9 +34,48 @@ npm run dev
 
 ## Deploy to Production
 
-## Reference to the backend and vice versa
+Create a docker compose file as follows
+```yaml
+networks:
+meetsy-network:
+name: meetsy-network
 
+services:
+mongo:
+image: mongo
+restart: always
+networks:
+- meetsy-network
+environment:
+MONGO_INITDB_ROOT_USERNAME: admin
+MONGO_INITDB_ROOT_PASSWORD: fajsdfi-asdifa4-ajfaknv-ckkdd
+ports:
+- "27017:27017"
 
+api:
+image: oli1115/meetsyapi:latest
+networks:
+- meetsy-network
+ports:
+- "8080:8080"
+- "8443:8443"
+volumes:
+- /etc/nginx/ssl:/app/ssl:ro
+depends_on:
+- mongo
 
-## Run the other docker container
-## DB Password als ENV Variable setzen
+frontend:
+image: oli1115/meetsyfrontend:latest
+networks:
+- meetsy-network
+ports:
+- "443:443"
+volumes:
+- /etc/nginx/ssl:/etc/nginx/ssl
+depends_on:
+- api
+```
+In the same directory run
+```sh
+docker compose up
+```
