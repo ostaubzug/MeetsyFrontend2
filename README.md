@@ -1,7 +1,7 @@
 
 
 # MeetsyFrontend
-[![CI](https://github.com/ostaubzug/FocusLauncherVue/actions/workflows/docker-image.yaml/badge.svg)](https://github.com/ostaubzug/FocusLauncherVue/actions)
+[![CI](https://github.com/ostaubzug/MeetsyFrontend2/actions/workflows/docker-image.yaml/badge.svg)](https://github.com/ostaubzug/MeetsyFrontend2/actions)
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/oli1115/meetsyfrontend)](https://hub.docker.com/r/oli1115/meetsyfrontend)
 [![Docker Image Size](https://img.shields.io/docker/image-size/oli1115/meetsyfrontend)](https://hub.docker.com/r/oli1115/meetsyfrontend)
