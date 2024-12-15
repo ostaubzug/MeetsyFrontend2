@@ -37,6 +37,8 @@ Set you environment variables in a `.env` file
 export MONGO_PASSWORD=your_password_here
 ```
 
+
+
 Add your certificates. In this example we are using self signed certificates.
 
 ```sh
