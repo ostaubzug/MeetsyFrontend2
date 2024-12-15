@@ -75,6 +75,9 @@ networks:
   meetsy-network:
     name: meetsy-network
 
+volumes:
+  mongodb_data:
+
 services:
   mongo:
     image: mongo
@@ -86,6 +89,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
       - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
 
   api:
     image: oli1115/meetsyapi:latest
